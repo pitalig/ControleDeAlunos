@@ -1,4 +1,4 @@
-package com.mycompany.controledealunos.jdbc;
+package com.mycompany.controledealunos.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class AlunoBD {
 
 	public AlunoBD() {
 		// cria uma conexao com o BD
-		this.connection = new ConexaoBD().getConnection();
+		this.connection = new DataSource().getConnection();
 	}
 
 	public void fechaConexao() {

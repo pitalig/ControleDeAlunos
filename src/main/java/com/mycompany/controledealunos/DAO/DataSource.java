@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.controledealunos.jdbc;
+package com.mycompany.controledealunos.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/**
- *
- * @author francisco.massetto
- */
 public class DataSource {
     private String hostname;
     private int    port;
@@ -24,7 +15,7 @@ public class DataSource {
         
         hostname = "localhost";
         port     = 3306;
-        database = "ecommerce";
+        database = "progweb";
         username = "root";
         password = "ufabc";
         try{

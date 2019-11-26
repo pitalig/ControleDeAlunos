@@ -6,7 +6,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import com.mycompany.controledealunos.jdbc.AlunoBD;
+import com.mycompany.controledealunos.DAO.AlunoBD;
 import com.mycompany.controledealunos.modelo.Aluno;
 
 @WebServlet("/insere")
