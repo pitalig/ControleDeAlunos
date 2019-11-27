@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.mycompany.controledealunos.DAO.AlunoBD;
 import com.mycompany.controledealunos.modelo.Aluno;
 
-@WebServlet("/remove")
-public class RemoveServlet extends HttpServlet {
+@WebServlet("/remove-aluno")
+public class RemoveAlunoServlet extends HttpServlet {
 	/**
 	 * 
 	 */

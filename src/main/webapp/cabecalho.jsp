@@ -1,3 +1,3 @@
 <body>
-	<h1>Cabeçalho</h1>
+	<h1>Cabecalho</h1>
 </body>

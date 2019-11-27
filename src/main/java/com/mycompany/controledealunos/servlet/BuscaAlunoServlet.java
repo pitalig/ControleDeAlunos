@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.mycompany.controledealunos.DAO.AlunoBD;
 import com.mycompany.controledealunos.modelo.Aluno;
 
-@WebServlet("/busca")
-public class BuscaServlet extends HttpServlet {
+@WebServlet("/busca-aluno")
+public class BuscaAlunoServlet extends HttpServlet {
 	/**
 	 * 
 	 */

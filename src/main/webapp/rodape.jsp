@@ -1,3 +1,3 @@
 <body>
-	<h1>Rodapé</h1>
+	<h1>Rodape</h1>
 </body>

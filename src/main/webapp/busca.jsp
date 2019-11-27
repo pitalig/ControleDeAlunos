@@ -6,7 +6,7 @@
 <body>
 <jsp:include page="cabecalho.jsp"/>
 	<h1>Busca de Alunos</h1>
-	<form action="busca" method="post">
+	<form action="busca-aluno" method="post">
 		<input type="radio" name="opcaoBusca" value="todos" checked="checked">Todos
 		<br> <input type="radio" name="opcaoBusca" value="nome">
 		Nome do aluno: <input type="text" name="nomeBusca" /> <br> <br>

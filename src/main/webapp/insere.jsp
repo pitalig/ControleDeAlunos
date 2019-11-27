@@ -1,10 +1,10 @@
-<title>Inserção de Alunos</title>
+<title>Insercao de Alunos</title>
 <body>
 <jsp:include page="cabecalho.jsp"/>
 	<h1>Inserir Aluno</h1>
-	<form action="insere" method="post">
+	<form action="insere-aluno" method="post">
 		Nome: <input type="text" name="nome" /><br> Email: <input
-			type="text" name="email" /><br> Endereço: <input type="text"
+			type="text" name="email" /><br> Endereco: <input type="text"
 			name="endereco" /><br> <br> <input type="submit"
 			value="Gravar" />
 	</form>
