@@ -44,7 +44,7 @@ public class AlunoBD {
 	public void remove(Aluno aluno) {
 		try {
 			PreparedStatement stmt = connection.prepareStatement("delete from alunos where id=?");
-			stmt.setInt(1, aluno.getId());
+			stmt.setLong(1, aluno.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -60,7 +60,7 @@ public class AlunoBD {
 			stmt.setString(1, aluno.getNome());
 			stmt.setString(2, aluno.getEmail());
 			stmt.setString(3, aluno.getEndereco());
-			stmt.setInt(4, aluno.getId());
+			stmt.setLong(4, aluno.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -79,7 +79,7 @@ public class AlunoBD {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Aluno aluno = new Aluno();
-				aluno.setId(rs.getInt("id"));
+				aluno.setId(rs.getLong("id"));
 				aluno.setNome(rs.getString("nome"));
 				aluno.setEmail(rs.getString("email"));
 				aluno.setEndereco(rs.getString("endereco"));
@@ -102,7 +102,7 @@ public class AlunoBD {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Aluno aluno = new Aluno();
-				aluno.setId(rs.getInt("id"));
+				aluno.setId(rs.getLong("id"));
 				aluno.setNome(rs.getString("nome"));
 				aluno.setEmail(rs.getString("email"));
 				aluno.setEndereco(rs.getString("endereco"));

@@ -19,7 +19,7 @@ public class DataSource {
         username = "root";
         password = "ufabc";
         try{
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             String url = "jdbc:mysql://"+hostname+":"+port+"/"+database;
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("DATASOURCE - Connected!");
