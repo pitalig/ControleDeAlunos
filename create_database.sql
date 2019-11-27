@@ -10,5 +10,8 @@ create table alunos(
 );
 
 insert into alunos values (null, 'Joao Silva','aluno@email.ru', 'Rua Abolicao');
+insert into alunos values (null, 'Jessica Silva','jessica@email.ru', 'Rua Abolicao');
+insert into alunos values (null, 'Priscila Silva','pris@email.ru', 'Rua Abolicao');
+insert into alunos values (null, 'Adolfo Silva','adolfo@email.ru', 'Rua Abolicao');
 
 select * from alunos;
