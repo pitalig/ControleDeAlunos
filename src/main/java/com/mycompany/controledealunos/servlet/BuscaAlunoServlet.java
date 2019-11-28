@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mycompany.controledealunos.DAO.AlunoBD;
 import com.mycompany.controledealunos.modelo.Aluno;
 
-@WebServlet("/busca-aluno")
+@WebServlet("/aluno/busca")
 public class BuscaAlunoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

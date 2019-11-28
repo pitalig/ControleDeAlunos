@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import com.mycompany.controledealunos.DAO.DisciplinaBD;
 import com.mycompany.controledealunos.modelo.Disciplina;
 
-@WebServlet("/insere-disciplina")
+@WebServlet("/disciplina/insere")
 public class InsereDisciplinaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

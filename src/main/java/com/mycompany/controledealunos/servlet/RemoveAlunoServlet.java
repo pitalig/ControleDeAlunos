@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mycompany.controledealunos.DAO.AlunoBD;
 import com.mycompany.controledealunos.modelo.Aluno;
 
-@WebServlet("/remove-aluno")
+@WebServlet("/aluno/remove")
 public class RemoveAlunoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
