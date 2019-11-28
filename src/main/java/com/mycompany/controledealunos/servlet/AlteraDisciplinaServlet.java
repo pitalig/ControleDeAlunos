@@ -9,34 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mycompany.controledealunos.DAO.AlunoBD;
-import com.mycompany.controledealunos.modelo.Aluno;
+import com.mycompany.controledealunos.DAO.DisciplinaBD;
+import com.mycompany.controledealunos.modelo.Disciplina;
 
-@WebServlet("/altera-aluno")
-public class AlteraAlunoServlet extends HttpServlet {
-
+@WebServlet("/altera-disciplina")
+public class AlteraDisciplinaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		// obtem parametros do request
 		Long ID = Long.parseLong(req.getParameter("ID"));
 		String nome = req.getParameter("nome");
-		String email = req.getParameter("email");
-		String endereco = req.getParameter("endereco");
-		// instancia objeto Aluno
-		Aluno aluno = new Aluno();
-		aluno.setId(ID);
-		aluno.setNome(nome);
-		aluno.setEmail(email);
-		aluno.setEndereco(endereco);
-		AlunoBD bd = new AlunoBD();
-		bd.altera(aluno); // salva no BD
-		// escreve a pagina que sera enviada como resposta
+		int creditos = Integer.parseInt(req.getParameter("creditos"));
+		int vagas = Integer.parseInt(req.getParameter("vagas"));
+		
+		Disciplina disciplina = new Disciplina(ID, nome, creditos, vagas);
+		DisciplinaBD bd = new DisciplinaBD();
+		bd.altera(disciplina);
+		
 		out.println("<html>");
 		out.println("<body>");
-		out.println("<h2>Aluno " + aluno.getNome() + " alterado com sucesso!<h2>");
+		out.println("<h2>Disciplina " + disciplina.getNome() + " alterada com sucesso!<h2>");
 		out.println("</body>");
 		out.println("</html>");
 	}

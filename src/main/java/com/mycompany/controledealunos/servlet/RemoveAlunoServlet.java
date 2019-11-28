@@ -14,9 +14,7 @@ import com.mycompany.controledealunos.modelo.Aluno;
 
 @WebServlet("/remove-aluno")
 public class RemoveAlunoServlet extends HttpServlet {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Override

@@ -6,6 +6,9 @@ public class Disciplina {
 	private int creditos;
 	private int vagas;
 
+    public Disciplina() {
+    }
+
     public Disciplina(Long id, String nome, int creditos, int vagas) {
         this.id = id;
         this.nome = nome;
@@ -13,7 +16,7 @@ public class Disciplina {
         this.vagas = vagas;
     }
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 

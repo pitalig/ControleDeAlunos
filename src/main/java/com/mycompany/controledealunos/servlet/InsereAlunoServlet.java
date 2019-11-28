@@ -11,9 +11,7 @@ import com.mycompany.controledealunos.modelo.Aluno;
 
 @WebServlet("/insere-aluno")
 public class InsereAlunoServlet extends HttpServlet {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Override

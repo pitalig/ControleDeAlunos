@@ -10,39 +10,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mycompany.controledealunos.DAO.AlunoBD;
-import com.mycompany.controledealunos.modelo.Aluno;
+import com.mycompany.controledealunos.DAO.DisciplinaBD;
+import com.mycompany.controledealunos.modelo.Disciplina;
 
-@WebServlet("/busca-aluno")
-public class BuscaAlunoServlet extends HttpServlet {
+@WebServlet("/busca-disciplina")
+public class BuscaDisciplinaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
-		// obtem parametros do request
+		
 		String opcao = req.getParameter("opcaoBusca");
 		if (opcao.equals("todos")) {
-			AlunoBD aluno = new AlunoBD();
-			List<Aluno> alunos = aluno.getLista();
+			DisciplinaBD disciplina = new DisciplinaBD();
+			List<Disciplina> disciplinas = disciplina.getLista();
 			out.println("<html>");
 			out.println("<body>");
-			for (Aluno a : alunos) {
-				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Email: " + a.getEmail()
-						+ ", Endereco: " + a.getEndereco() + "</h2>");
+			for (Disciplina a : disciplinas) {
+				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Creditos: " + a.getCreditos()
+						+ ", Vagas: " + a.getVagas() + "</h2>");
 			}
 			out.println("</body>");
 			out.println("</html>");
 		} else {
 			String nome = req.getParameter("nomeBusca");
-			AlunoBD aluno = new AlunoBD();
-			List<Aluno> alunos = aluno.buscaAlunoPeloNome(nome);
+			DisciplinaBD disciplina = new DisciplinaBD();
+			List<Disciplina> disciplinas = disciplina.buscaDisciplinaPeloNome(nome);
 			out.println("<html>");
 			out.println("<body>");
-			for (Aluno a : alunos) {
-				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Email: " + a.getEmail()
-						+ ", Endereco: " + a.getEndereco() + "</h2>");
+			for (Disciplina a : disciplinas) {
+				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Creditos: " + a.getCreditos()
+						+ ", Vagas: " + a.getVagas() + "</h2>");
 			}
 			out.println("</body>");
 			out.println("</html>");
