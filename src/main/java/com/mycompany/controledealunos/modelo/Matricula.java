@@ -2,16 +2,36 @@ package com.mycompany.controledealunos.modelo;
 
 public class Matricula {
 	private Long id;
-	private Long alunoId;
-	private Long discId;
+	private Aluno aluno = new Aluno();
+	private Disciplina disciplina = new Disciplina();
 
     public Matricula() {
     }
 
     public Matricula(Long id, Long alunoId, Long discId) {
         this.id = id;
-        this.alunoId = alunoId;
-        this.discId = discId;
+        this.aluno.setId(alunoId);
+        this.disciplina.setId(discId);
+    }
+
+    public Matricula(Long id, 
+                     Long alunoId, 
+                     String nomeAluno,
+                     String email,
+                     String endereco,
+                     Long discId,
+                     String nomeDisc, 
+                     int creditos, 
+                     int vagas) {
+        this.id = id;
+        this.aluno.setId(alunoId);
+        this.aluno.setNome(nomeAluno);
+        this.aluno.setEmail(email);
+        this.aluno.setEndereco(endereco);
+        this.disciplina.setId(discId);
+        this.disciplina.setNome(nomeDisc);
+        this.disciplina.setCreditos(creditos);
+        this.disciplina.setVagas(vagas);
     }
 
     public Long getId() {
@@ -22,19 +42,27 @@ public class Matricula {
         this.id = id;
     }
 
+    public Aluno getAluno() {
+        return aluno;
+    }
+
     public Long getAlunoId() {
-        return alunoId;
+        return aluno.getId();
     }
 
     public void setAlunoId(Long alunoId) {
-        this.alunoId = alunoId;
+        this.aluno.setId(alunoId);
+    }
+
+    public Disciplina getDisc() {
+        return disciplina;
     }
 
     public Long getDiscId() {
-        return discId;
+        return disciplina.getId();
     }
 
     public void setDiscId(Long discId) {
-        this.discId = discId;
+        this.disciplina.setId(discId);
     }
 }

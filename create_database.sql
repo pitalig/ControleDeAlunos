@@ -43,6 +43,6 @@ insert into matricula values (null, 2, 3);
 insert into matricula values (null, 3, 3);
 insert into matricula values (null, 3, 4);
 
-select * from alunos
-join matricula on alunos.id = matricula.alunoId
-join disciplinas on disciplinas.id = matricula.discId;
+select * from alunos a
+join matricula m on a.id = m.alunoId
+join disciplinas d on d.id = m.discId;

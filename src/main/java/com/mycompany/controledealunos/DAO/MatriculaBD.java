@@ -105,11 +105,20 @@ public class MatriculaBD {
 		List<Matricula> matriculas = new ArrayList<Matricula>();
 		PreparedStatement stmt;
 		try {
-			stmt = connection.prepareStatement("select * from matriculas order by id");
+			stmt = connection.prepareStatement(
+					"select * from alunos a join matricula m on a.id = m.alunoId join disciplinas d on d.id = m.discId;");
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-                            Matricula matricula = new Matricula(rs.getLong("id"), rs.getLong("alunoId"), rs.getLong("discId"));
-                            matriculas.add(matricula);
+				Matricula matricula = new Matricula(rs.getLong("id"), 
+													rs.getLong("a.id"),
+													rs.getString("a.nome"),
+													rs.getString("a.email"),
+													rs.getString("a.endereco"),
+													rs.getLong("d.id"),
+													rs.getString("d.nome"),
+													rs.getInt("d.creditos"),
+													rs.getInt("d.vagas"));
+				matriculas.add(matricula);
 			}
 			rs.close();
 			stmt.close();
