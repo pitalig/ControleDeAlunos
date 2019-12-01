@@ -14,6 +14,7 @@ import com.mycompany.controledealunos.DAO.Utils;
 
 @WebServlet("/aluno/AutoNome")
 public class AutoNomeServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

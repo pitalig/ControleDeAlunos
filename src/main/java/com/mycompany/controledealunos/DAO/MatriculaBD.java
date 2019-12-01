@@ -24,7 +24,7 @@ public class MatriculaBD {
 	}
 
 	public void insere(Matricula matricula) {
-		String sql = "insert into matriculas (alunoId, discId) values (?,?)";
+		String sql = "insert into matricula (alunoId, discId) values (?,?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setLong(1, matricula.getAlunoId());
@@ -38,7 +38,7 @@ public class MatriculaBD {
 
 	public void remove(Matricula matricula) {
 		try {
-			PreparedStatement stmt = connection.prepareStatement("delete from matriculas where id=?");
+			PreparedStatement stmt = connection.prepareStatement("delete from matricula where id=?");
 			stmt.setLong(1, matricula.getId());
 			stmt.execute();
 			stmt.close();
@@ -48,7 +48,7 @@ public class MatriculaBD {
 	}
 
 	public void altera(Matricula matricula) {
-		String sql = "update matriculas set alunoId=?, discId=? where id=?";
+		String sql = "update matricula set alunoId=?, discId=? where id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setLong(1, matricula.getAlunoId());
@@ -64,7 +64,7 @@ public class MatriculaBD {
 	public List<Matricula> buscaMatriculaPeloAluno(Long alunoId) {
 		List<Matricula> matriculas = new ArrayList<Matricula>();
 		PreparedStatement stmt;
-		String sql = "select * from matriculas where alunoId=?";
+		String sql = "select * from matricula where alunoId=?";
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setLong(1, alunoId);
@@ -84,7 +84,7 @@ public class MatriculaBD {
 	public List<Matricula> buscaMatriculaPelaDisciplina(Long discId) {
 		List<Matricula> matriculas = new ArrayList<Matricula>();
 		PreparedStatement stmt;
-		String sql = "select * from matriculas where discId=?";
+		String sql = "select * from matricula where discId=?";
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setLong(1, discId);
@@ -109,7 +109,7 @@ public class MatriculaBD {
 					"select * from alunos a join matricula m on a.id = m.alunoId join disciplinas d on d.id = m.discId;");
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Matricula matricula = new Matricula(rs.getLong("id"), 
+				Matricula matricula = new Matricula(rs.getLong("m.id"), 
 													rs.getLong("a.id"),
 													rs.getString("a.nome"),
 													rs.getString("a.email"),

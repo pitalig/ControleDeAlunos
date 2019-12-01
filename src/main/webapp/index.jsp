@@ -14,5 +14,11 @@
 	<a href="disciplina/insere.jsp">Inserir Disciplina</a><br>
 	<a href="disciplina/altera.jsp">Alterar Disciplina</a><br>
 	<a href="disciplina/remove.jsp">Remover Disciplina</a><br>
+	
+	<h2>Controle de Matriculas</h2>
+	<a href="matricula/busca.jsp">Busca de Matriculas</a><br>
+	<a href="matricula/insere.jsp">Inserir Matricula</a><br>
+	<a href="matricula/altera.jsp">Alterar Matricula</a><br>
+	<a href="matricula/remove.jsp">Remover Matricula</a><br>
 	<jsp:include page="rodape.jsp"/>
 </body>

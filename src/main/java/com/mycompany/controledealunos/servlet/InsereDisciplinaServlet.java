@@ -18,12 +18,11 @@ public class InsereDisciplinaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		
-		Long ID = Long.parseLong(req.getParameter("ID"));
 		String nome = req.getParameter("nome");
 		int creditos = Integer.parseInt(req.getParameter("creditos"));
 		int vagas = Integer.parseInt(req.getParameter("vagas"));
 		
-		Disciplina disciplina = new Disciplina(ID, nome, creditos, vagas);
+		Disciplina disciplina = new Disciplina(nome, creditos, vagas);
 		DisciplinaBD bd = new DisciplinaBD();
 		bd.insere(disciplina);
 		

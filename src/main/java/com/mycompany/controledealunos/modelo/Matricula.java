@@ -14,6 +14,11 @@ public class Matricula {
         this.disciplina.setId(discId);
     }
 
+    public Matricula(Long alunoId, Long discId) {
+        this.aluno.setId(alunoId);
+        this.disciplina.setId(discId);
+    }
+
     public Matricula(Long id, 
                      Long alunoId, 
                      String nomeAluno,

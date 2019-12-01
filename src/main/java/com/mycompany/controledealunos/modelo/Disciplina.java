@@ -16,6 +16,12 @@ public class Disciplina {
         this.vagas = vagas;
     }
 
+    public Disciplina(String nome, int creditos, int vagas) {
+        this.nome = nome;
+        this.creditos = creditos;
+        this.vagas = vagas;
+    }
+
 	public Long getId() {
         return id;
     }
