@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.mycompany.controledealunos.modelo.Disciplina;
+import com.mycompany.controledealunos.modelo.Matricula;
 
 public class MatriculaBD {
 	private Connection connection;
@@ -23,13 +23,12 @@ public class MatriculaBD {
 		}
 	}
 
-	public void insere(Disciplina disciplina) {
-		String sql = "insert into disciplinas (nome,creditos,vagas) values (?,?,?)";
+	public void insere(Matricula matricula) {
+		String sql = "insert into matriculas (alunoId, discId) values (?,?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, disciplina.getNome());
-			stmt.setInt(2, disciplina.getCreditos());
-			stmt.setInt(3, disciplina.getVagas());
+			stmt.setLong(1, matricula.getAlunoId());
+			stmt.setLong(2, matricula.getDiscId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -37,10 +36,10 @@ public class MatriculaBD {
 		}
 	}
 
-	public void remove(Disciplina disciplina) {
+	public void remove(Matricula matricula) {
 		try {
-			PreparedStatement stmt = connection.prepareStatement("delete from disciplinas where id=?");
-			stmt.setLong(1, disciplina.getId());
+			PreparedStatement stmt = connection.prepareStatement("delete from matriculas where id=?");
+			stmt.setLong(1, matricula.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -48,14 +47,13 @@ public class MatriculaBD {
 		}
 	}
 
-	public void altera(Disciplina disciplina) {
-		String sql = "update disciplinas set nome=?, creditos=?, vagas=? where id=?";
+	public void altera(Matricula matricula) {
+		String sql = "update matriculas set alunoId=?, discId=? where id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, disciplina.getNome());
-			stmt.setInt(2, disciplina.getCreditos());
-			stmt.setInt(3, disciplina.getVagas());
-			stmt.setLong(4, disciplina.getId());
+			stmt.setLong(1, matricula.getAlunoId());
+			stmt.setLong(2, matricula.getDiscId());
+			stmt.setLong(3, matricula.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -63,41 +61,61 @@ public class MatriculaBD {
 		}
 	}
 
-	public List<Disciplina> buscaDisciplinaPeloNome(String nome) {
-		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+	public List<Matricula> buscaMatriculaPeloAluno(Long alunoId) {
+		List<Matricula> matriculas = new ArrayList<Matricula>();
 		PreparedStatement stmt;
-		String sql = "select * from disciplinas where nome=?";
+		String sql = "select * from matriculas where alunoId=?";
 		try {
 			stmt = connection.prepareStatement(sql);
-			stmt.setString(1, nome);
+			stmt.setLong(1, alunoId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Disciplina disciplina = new Disciplina(rs.getLong("id"), rs.getString("nome"), rs.getInt("creditos"), rs.getInt("vagas"));
-				disciplinas.add(disciplina);
+				Matricula matricula = new Matricula(rs.getLong("id"), rs.getLong("alunoId"), rs.getLong("discId"));
+				matriculas.add(matricula);
 			}
 			rs.close();
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return disciplinas;
+		return matriculas;
 	}
 
-	public List<Disciplina> getLista() {
-		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+	public List<Matricula> buscaMatriculaPelaDisciplina(Long discId) {
+		List<Matricula> matriculas = new ArrayList<Matricula>();
 		PreparedStatement stmt;
+		String sql = "select * from matriculas where discId=?";
 		try {
-			stmt = connection.prepareStatement("select * from disciplinas order by nome");
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, discId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-                            Disciplina disciplina = new Disciplina(rs.getLong("id"), rs.getString("nome"), rs.getInt("creditos"), rs.getInt("vagas"));
-                            disciplinas.add(disciplina);
+				Matricula matricula = new Matricula(rs.getLong("id"), rs.getLong("alunoId"), rs.getLong("discId"));
+				matriculas.add(matricula);
 			}
 			rs.close();
 			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		return disciplinas;
+		return matriculas;
+	}
+
+	public List<Matricula> getLista() {
+		List<Matricula> matriculas = new ArrayList<Matricula>();
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement("select * from matriculas order by id");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+                            Matricula matricula = new Matricula(rs.getLong("id"), rs.getLong("alunoId"), rs.getLong("discId"));
+                            matriculas.add(matricula);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return matriculas;
 	}
 }
