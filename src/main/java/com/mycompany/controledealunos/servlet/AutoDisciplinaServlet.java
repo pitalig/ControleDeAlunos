@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mycompany.controledealunos.DAO.AlunoBD;
+import com.mycompany.controledealunos.DAO.DisciplinaBD;
 import com.mycompany.controledealunos.DAO.Utils;
 
-@WebServlet("/aluno/AutoNome")
-public class AutoNomeServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+@WebServlet("/disciplina/AutoDisciplina")
+public class AutoDisciplinaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,9 +23,9 @@ public class AutoNomeServlet extends HttpServlet {
         String term = req.getParameter("term");
         String q = term.toLowerCase();
         
-        AlunoBD alunoBD = new AlunoBD();
+        DisciplinaBD disciplinaBD = new DisciplinaBD();
 
-        List<String> listaNomes = alunoBD.getListaNome();
+        List<String> listaNomes = disciplinaBD.getListaDisciplina();
         List<String> filteredNamesList = Utils.filterListByTerm(listaNomes, q);
         String json = Utils.list2Json(filteredNamesList);
 

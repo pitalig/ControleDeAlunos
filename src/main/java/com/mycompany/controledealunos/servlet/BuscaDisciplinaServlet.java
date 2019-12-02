@@ -35,7 +35,7 @@ public class BuscaDisciplinaServlet extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 		} else {
-			String nome = req.getParameter("nomeBusca");
+			String nome = req.getParameter("disciplinaBusca");
 			DisciplinaBD disciplina = new DisciplinaBD();
 			List<Disciplina> disciplinas = disciplina.buscaDisciplinaPeloNome(nome);
 			out.println("<html>");
