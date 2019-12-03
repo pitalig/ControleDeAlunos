@@ -1,12 +1,20 @@
-<title>Insercao de Matricula</title>
+<title>Insercao de Matriculas</title>
 
 <body>
-	<jsp:include page="../cabecalho.jsp" />
-	<h1>Inserir Matricula</h1>
-	<form action="insere" method="post">
-		ID Aluno: <input type="number" name="alunoId" /><br>
-		ID Disciplina: <input type="number" name="discId" /><br> <br>
-		<input type="submit" value="Gravar" />
-	</form>
-	<jsp:include page="../rodape.jsp" />
+    <jsp:include page="../cabecalho.jsp" />
+    <div style="margin: 20px">
+        <h2>Inserir Matriculas</h2>
+        <form action="insere" method="post">
+            <div class="form-group">
+                <label for="alunoId">ID Aluno:</label>
+                <input type="number" name="alunoId" class="form-control" placeholder="alunoId" />
+            </div>
+            <div class="form-group">
+                <label for="discID">ID Disciplina</label>
+                <input type="number" name="discID" class="form-control" placeholder="discID" />
+            </div>
+            <input type="submit" value="Gravar" class="btn btn-outline-success" style="margin-top: 10px" />
+        </form>
+    </div>
+    <jsp:include page="../rodape.jsp" />
 </body>

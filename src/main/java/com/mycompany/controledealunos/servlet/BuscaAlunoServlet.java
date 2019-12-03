@@ -26,8 +26,7 @@ public class BuscaAlunoServlet extends HttpServlet {
 		if (opcao.equals("todos")) {
 			AlunoBD aluno = new AlunoBD();
 			List<Aluno> alunos = aluno.getLista();
-			out.println("<html>");
-			out.println("<body>");
+			out.println("<html><body>");
 			for (Aluno a : alunos) {
 				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Email: " + a.getEmail()
 						+ ", Endereco: " + a.getEndereco() + "</h2>");
