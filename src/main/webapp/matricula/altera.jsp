@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="discID">ID Disciplina</label>
-                <input type="number" name="discID" class="form-control" placeholder="discID" />
+                <input type="number" name="discId" class="form-control" placeholder="discId" />
             </div>
             <input type="submit" value="Alterar" class="btn btn-outline-success" style="margin-top: 10px" />
         </form>
