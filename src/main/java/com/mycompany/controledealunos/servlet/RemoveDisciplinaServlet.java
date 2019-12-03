@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mycompany.controledealunos.DAO.DisciplinaBD;
 import com.mycompany.controledealunos.modelo.Disciplina;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @WebServlet("/disciplina/remove")
 public class RemoveDisciplinaServlet extends HttpServlet {
