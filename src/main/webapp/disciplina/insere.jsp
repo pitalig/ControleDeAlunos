@@ -1,12 +1,23 @@
 <title>Insercao de Disciplina</title>
 <body>
 <jsp:include page="../cabecalho.jsp"/>
-	<h1>Inserir Disciplina</h1>
+    <div style="margin: 20px">
+	<h2>Inserir Disciplina</h2>
 	<form action="insere" method="post">
-		Nome: <input type="text" name="nome" /><br>
-		Creditos: <input type="number" name="creditos" /><br>
-		Vagas: <input type="number" name="vagas" /><br> <br>
-		<input type="submit" value="Gravar" />
+		<div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" class="form-control" placeholder="Nome"/>
+                </div>
+		<div class="form-group">
+                    <label for="creditos">Créditos</label>
+                    <input type="number" name="creditos" class="form-control" placeholder="Créditos"/>
+                </div>
+		<div class="form-group">
+                    <label for="vagas">Vagas</label>
+                    <input type="number" name="vagas" class="form-control" placeholder="Vagas"/> 
+                </div>
+		<input type="submit" value="Gravar" class="btn btn-outline-success" style="margin-top: 10px"/>
 	</form>
-	<jsp:include page="../rodape.jsp"/>
+    </div>
+    <jsp:include page="../rodape.jsp"/>
 </body>

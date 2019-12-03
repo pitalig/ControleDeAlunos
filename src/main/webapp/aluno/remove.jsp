@@ -1,10 +1,16 @@
 <title>Remocao de Alunos</title>
 <body>
-	<jsp:include page="../cabecalho.jsp" />
-	<h1>Remover Aluno</h1>
+    <jsp:include page="../cabecalho.jsp" />
+    <div style="margin: 20px">
+	<h2>Remover Aluno</h2>
 	<form action="remove" method="post">
-		ID: <input type="number" name="id" /><br> <input type="submit"
-			value="Remover" />
+		<div class="form-group">
+                    <label for="ID">ID</label>
+                    <input type="number" name="ID" class="form-control" placeholder="ID"/>
+                </div>
+            <input type="submit" value="Remover" 
+                   class="btn btn-outline-success" style="margin-top: 10px"/>
 	</form>
-	<jsp:include page="../rodape.jsp" />
+    </div>
+    <jsp:include page="../rodape.jsp" />
 </body>
