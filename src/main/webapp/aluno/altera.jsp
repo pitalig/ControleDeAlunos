@@ -10,8 +10,8 @@
 	<h2>Alteração de Alunos</h2>
             <form action="altera" method="post">
                 <div class="form-group">
-                    <label for="ID">ID</label>
-                    <input type="number" name="ID" class="form-control" placeholder="ID"/>
+                    <label for="id">ID</label>
+                    <input type="number" name="ID" class="form-control" placeholder="id"/>
                 </div>
                 <div class="form-group">
                     <label for="nome">Nome</label>

@@ -1,9 +1,9 @@
 package com.mycompany.controledealunos.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,16 +20,10 @@ public class BuscaMatriculaServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
-		
 		MatriculaBD matricula = new MatriculaBD();
 		List<Matricula> matriculas = matricula.getLista();
-		out.println("<html>");
-		out.println("<body>");
-		for (Matricula a : matriculas) {
-			out.println("<h2>ID: " + a.getId() + ", Aluno: " + a.getAluno().getNome() + ", Disciplina: " + a.getDisc().getNome() + "</h2>");
-		}
-		out.println("</body>");
-		out.println("</html>");
+		req.getSession().setAttribute("Data", matriculas);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/matricula/lista.jsp");
+		dispatcher.forward(req, resp);
 	}
 }

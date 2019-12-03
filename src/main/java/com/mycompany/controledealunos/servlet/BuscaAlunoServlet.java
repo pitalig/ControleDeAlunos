@@ -1,7 +1,6 @@
 package com.mycompany.controledealunos.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,27 +20,21 @@ public class BuscaAlunoServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
 		// obtem parametros do request
 		String opcao = req.getParameter("opcaoBusca");
 		if (opcao.equals("todos")) {
 			AlunoBD aluno = new AlunoBD();
 			List<Aluno> alunos = aluno.getLista();
-                        req.getSession().setAttribute("Data",alunos);
-                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aluno/lista.jsp");
-                        dispatcher.forward(req, resp);
+			req.getSession().setAttribute("Data", alunos);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aluno/lista.jsp");
+			dispatcher.forward(req, resp);
 		} else {
 			String nome = req.getParameter("nomeBusca");
 			AlunoBD aluno = new AlunoBD();
 			List<Aluno> alunos = aluno.buscaAlunoPeloNome(nome);
-			out.println("<html>");
-			out.println("<body>");
-			for (Aluno a : alunos) {
-				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Email: " + a.getEmail()
-						+ ", Endereco: " + a.getEndereco() + "</h2>");
-			}
-			out.println("</body>");
-			out.println("</html>");
+			req.getSession().setAttribute("Data", alunos);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aluno/lista.jsp");
+			dispatcher.forward(req, resp);
 		}
 	}
 }

@@ -5,8 +5,8 @@
 	<h2>Remover Aluno</h2>
 	<form action="remove" method="post">
 		<div class="form-group">
-                    <label for="ID">ID</label>
-                    <input type="number" name="ID" class="form-control" placeholder="ID"/>
+                    <label for="id">ID</label>
+                    <input type="number" name="id" class="form-control" placeholder="id"/>
                 </div>
             <input type="submit" value="Remover" 
                    class="btn btn-outline-success" style="margin-top: 10px"/>

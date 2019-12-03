@@ -1,8 +1,8 @@
 package com.mycompany.controledealunos.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +18,6 @@ public class AlteraMatriculaServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
 		Long ID = Long.parseLong(req.getParameter("ID"));
 		Long alunoId = Long.parseLong(req.getParameter("alunoId"));
 		Long discId = Long.parseLong(req.getParameter("discId"));
@@ -26,11 +25,9 @@ public class AlteraMatriculaServlet extends HttpServlet {
 		Matricula matricula = new Matricula(ID, alunoId, discId);
 		MatriculaBD bd = new MatriculaBD();
 		bd.altera(matricula);
-		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<h2>Matricula " + matricula.getId() + " alterada com sucesso!<h2>");
-		out.println("</body>");
-		out.println("</html>");
+		String response = "Matricula " + matricula.getId() + " alterada com sucesso!";
+		req.getSession().setAttribute("Data", response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/message.jsp");
+		dispatcher.forward(req, resp);
 	}
 }

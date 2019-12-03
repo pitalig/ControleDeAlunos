@@ -1,8 +1,8 @@
 package com.mycompany.controledealunos.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,28 +20,23 @@ public class RemoveAlunoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            PrintWriter out = resp.getWriter();
             // obtem parametros do request
             long id = Long.parseLong(req.getParameter("id"));
             // instancia objeto Aluno
             Aluno aluno = new Aluno();
             aluno.setId(id);
             AlunoBD bd = new AlunoBD();
-            bd.remove(aluno); // salva no BD
-            // escreve a pagina que sera enviada como resposta
-            out.println("<html>");
-            out.println("<body>");
-            out.println("<h2>Aluno removido com sucesso!<h2>");
-            out.println("</body>");
-            out.println("</html>");
+            bd.remove(aluno); 
+            String response = "Aluno removido com sucesso!";
+            req.getSession().setAttribute("Data", response);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/message.jsp");
+            dispatcher.forward(req, resp);
         } catch (RuntimeException ex) {
             if (ex.getMessage().contains("com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException")) {
-                PrintWriter out = resp.getWriter();
-                out.println("<html>");
-                out.println("<body>");
-                out.println("<h2>NÃ£o Ã© permitido remover um aluno com matrÃ­culas atreladas a ele!<h2>");
-                out.println("</body>");
-                out.println("</html>");
+                String response = "Não é permitido remover um aluno com matrí­culas atreladas a ele!";
+                req.getSession().setAttribute("Data", response);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/message.jsp");
+                dispatcher.forward(req, resp);
             } else {
                 throw ex;
             }

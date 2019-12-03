@@ -15,9 +15,7 @@ public class InsereDisciplinaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
-		
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		String nome = req.getParameter("nome");
 		int creditos = Integer.parseInt(req.getParameter("creditos"));
 		int vagas = Integer.parseInt(req.getParameter("vagas"));
@@ -25,11 +23,9 @@ public class InsereDisciplinaServlet extends HttpServlet {
 		Disciplina disciplina = new Disciplina(nome, creditos, vagas);
 		DisciplinaBD bd = new DisciplinaBD();
 		bd.insere(disciplina);
-		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<h2>Disciplina " + disciplina.getNome() + " inserida com sucesso!<h2>");
-		out.println("</body>");
-		out.println("</html>");
+		String response = "Disciplina inserida com sucesso!";
+		req.getSession().setAttribute("Data", response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/message.jsp");
+		dispatcher.forward(req, resp);
 	}
 }

@@ -1,8 +1,8 @@
 package com.mycompany.controledealunos.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +19,6 @@ public class AlteraAlunoServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
 		// obtem parametros do request
 		Long ID = Long.parseLong(req.getParameter("ID"));
 		String nome = req.getParameter("nome");
@@ -32,12 +31,10 @@ public class AlteraAlunoServlet extends HttpServlet {
 		aluno.setEmail(email);
 		aluno.setEndereco(endereco);
 		AlunoBD bd = new AlunoBD();
-		bd.altera(aluno); // salva no BD
-		// escreve a pagina que sera enviada como resposta
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<h2>Aluno " + aluno.getNome() + " alterado com sucesso!<h2>");
-		out.println("</body>");
-		out.println("</html>");
+		bd.altera(aluno);
+		String response = "Aluno " + aluno.getNome() + " alterado com sucesso!";
+		req.getSession().setAttribute("Data", response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/message.jsp");
+		dispatcher.forward(req, resp);
 	}
 }
