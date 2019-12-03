@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mycompany.controledealunos.DAO.AlunoBD;
 import com.mycompany.controledealunos.modelo.Aluno;
+import javax.servlet.RequestDispatcher;
 
 @WebServlet("/aluno/busca")
 public class BuscaAlunoServlet extends HttpServlet {
@@ -26,13 +27,9 @@ public class BuscaAlunoServlet extends HttpServlet {
 		if (opcao.equals("todos")) {
 			AlunoBD aluno = new AlunoBD();
 			List<Aluno> alunos = aluno.getLista();
-			out.println("<html><body>");
-			for (Aluno a : alunos) {
-				out.println("<h2>ID: " + a.getId() + ", Nome: " + a.getNome() + ", Email: " + a.getEmail()
-						+ ", Endereco: " + a.getEndereco() + "</h2>");
-			}
-			out.println("</body>");
-			out.println("</html>");
+                        req.getSession().setAttribute("Data",alunos);
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/aluno/lista.jsp");
+                        dispatcher.forward(req, resp);
 		} else {
 			String nome = req.getParameter("nomeBusca");
 			AlunoBD aluno = new AlunoBD();
